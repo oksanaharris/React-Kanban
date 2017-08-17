@@ -2,10 +2,12 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 body {
   background-color: #f7f7f7;
+
 }
 
 .App {
@@ -14,14 +16,37 @@ body {
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 40px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  background-color: #585c63;
+  height: 70px;
+  padding: 5px 10px;
   color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navElement {
+  height: 40px;
+  /*background-color: orange;*/
+  font-size: 20px;
+  line-height: 40px;
+  vertical-align: center;
+  color: white;
+  margin: 10px;
+}
+
+.pageTitle {
+  min-width: 140px;
+}
+
+.newTaskButton{
+  background: none;
+  border: 1px solid white;
+  padding: 0 15px;
 }
 
 .App-intro {
@@ -33,25 +58,11 @@ body {
   to { transform: rotate(360deg); }
 }
 
-.newTaskButtonContainer {
-  position: absolute;
-  top: 60px;
-  right: 10px;
-}
-
-.newTaskButton {
-  font-size: 30px;
-  line-height: 40px;
-  vertical-align: center;
-  width: 40px;
-  height: 40px;
-}
-
 .dashboardContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px;
 }
 
 .boardContainer {
@@ -59,10 +70,14 @@ body {
   /*padding: 20px;*/
   width: 32%;
   border-radius: 2px;
+  min-width: 300px;
+  margin: 10px;
+  height: 750px;
+  overflow: auto;
 }
 
 .boardTitle {
-  font-size: 22px;
+  font-size: 20px;
   background-color: #c2c6ce;
   height: 45px;
   line-height: 45px;
@@ -86,22 +101,37 @@ body {
   text-align: left;
   box-shadow: 2px 5px 15px #888888;
   border-radius: 2px;
+  min-width: 250px;
 }
 
-p {
-  line-height: 25px;
+.cardTitle{
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+
+.cardDetails {
+  line-height: 20px;
+  /*background-color: orange;*/
   vertical-align: middle;
-  margin: 10px 0;
+  margin: 1px 0;
 }
 
-.nextStageButton {
+.cardButtonContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cardButton {
   height: 30px;
   line-height: 30px;
   width: 100px;
   border: none;
   background-color: white;
   font-size: 14px;
-  margin: 10px 0;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  min-width: 100px;
 }
 
 .formModal {

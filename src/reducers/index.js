@@ -61,6 +61,24 @@ const myReducer = (state = initialState, action) => {
         cards: newCards
       });
 
+    case 'EDIT_TASK':
+      let editedCards = state.cards.map(card => {
+        if (card.id === action.id) {
+          card.task = action.task;
+          card.priority = action.priority;
+          card.createdBy = action.createdBy;
+          card.assignedTo = action.assignedTo;
+        }
+        return card;
+      });
+      return  Object.assign({}, state, {cards: editedCards});
+
+    case 'DELETE_TASK':
+      let fewerCards = state.cards.filter(card => {
+          return card.id !== action.id;
+      });
+      return  Object.assign({}, state, {cards: fewerCards});
+
     default:
       return state;
   }

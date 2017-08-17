@@ -3,7 +3,6 @@ import logo from '../../logo.svg';
 import './App.css';
 import QueueBoard from '../QueueBoard';
 import AddForm from '../AddForm';
-import EditForm from '../EditForm';
 import OpenAddForm from '../../components/OpenAddForm';
 
 class App extends Component {
@@ -30,19 +29,18 @@ class App extends Component {
     })
   }
 
-
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <div className="pageTitle navElement">KANBAN BOARD</div>
+          <div className="pageLogo navElement"><img src={logo} className="App-logo" alt="logo" /></div>
+          <OpenAddForm onPlusClick={()=>{this.onPlusClick()}} />
         </div>
-        <OpenAddForm onPlusClick={()=>{this.onPlusClick()}} />
         <div className="dashboardContainer">
-          <QueueBoard filterBy="queue" title="Queued Up" buttonText="STARTED"/>
-          <QueueBoard filterBy="in progress" title="In Progress" buttonText="FINISHED"/>
-          <QueueBoard filterBy="done" title="Completed" buttonText="ARCHIVE"/>
+          <QueueBoard filterBy="queue" title="QUEUED UP" buttonText="STARTED"/>
+          <QueueBoard filterBy="in progress" title="IN PROGRESS" buttonText="FINISHED"/>
+          <QueueBoard filterBy="done" title="COMPLETED" buttonText="ARCHIVE"/>
 
         </div>
         <AddForm shown={this.state.addTaskModal} onAddClick={this.onAddClick} />

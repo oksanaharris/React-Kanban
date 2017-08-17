@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {nextStageAction} from '../../actions';
+import {deleteTaskAction} from '../../actions';
 import Card from '../../components/Card';
 import EditForm from '../EditForm';
 
@@ -16,6 +17,10 @@ class QueueBoard extends Component {
 
   nextStage(id) {
     this.props.setToNextStage(id);
+  }
+
+  deleteTask(id){
+    this.props.deleteTask(id);
   }
 
   openEditForm(taskId) {
@@ -48,7 +53,7 @@ class QueueBoard extends Component {
             })
             .map(card => {
             return (
-              <Card key={card.id} {...card} buttonText={this.props.buttonText} onButtonClick={() => this.nextStage(card.id)} openEditForm={() => this.openEditForm(card.id)} />
+              <Card key={card.id} {...card} buttonText={this.props.buttonText} onButtonClick={() => this.nextStage(card.id)} openEditForm={() => this.openEditForm(card.id)} onDeleteClick={() => this.deleteTask(card.id)} />
           )})}
         </ul>
       </div>
@@ -67,6 +72,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setToNextStage: (id) => {
       dispatch(nextStageAction(id));
+    },
+    deleteTask: (id) => {
+      dispatch(deleteTaskAction(id));
     }
   }
 }

@@ -2,9 +2,7 @@ import React from 'react';
 
 const OpenAddForm = ({onPlusClick}) => {
   return (
-    <div className="newTaskButtonContainer">
-      <button className="newTaskButton" onClick={onPlusClick}>&#43;</button>
-    </div>
+    <button className="newTaskButton navElement" onClick={onPlusClick}>&#43;NEW TASK</button>
   );
 }
 
