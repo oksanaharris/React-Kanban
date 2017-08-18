@@ -26,14 +26,13 @@ class QueueBoard extends Component {
   openEditForm(taskId) {
     console.log('task of interest', taskId);
     this.setState({
-      editModal: 'visible',
       editTaskId: taskId
     });
   }
 
   closeEditForm(){
     this.setState({
-      editModal: 'hidden'
+      editTaskId: null
     })
   }
 
@@ -43,7 +42,7 @@ class QueueBoard extends Component {
       <div className="boardContainer">
         {
           (this.state.editTaskId) ?
-              <EditForm shown={this.state.editModal} targetTaskId={this.state.editTaskId} closeEditForm={()=> this.closeEditForm()}/> : ''
+              <EditForm targetTaskId={this.state.editTaskId} closeEditForm={()=> this.closeEditForm()}/> : ''
         }
         <div className="boardTitle">{this.props.title}</div>
         <ul className="list">
@@ -60,7 +59,6 @@ class QueueBoard extends Component {
     );
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {

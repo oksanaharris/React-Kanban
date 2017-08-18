@@ -8,12 +8,13 @@ class AddForm extends Component {
 
     this.state = {
       task: '',
-      priority: 'low',
+      priority: 'LOW',
       createdBy: '',
       assignedTo: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.closeOnClickOutside = this.closeOnClickOutside.bind(this);
   }
 
   handleChange(e) {
@@ -28,13 +29,21 @@ class AddForm extends Component {
     this.props.addTask({...this.state});
     console.log('this is our new task from state', this.state);
     this.props.onAddClick();
+    this.setState({priority: 'LOW'});
 
   }
 
+  closeOnClickOutside(e){
+
+    if(e.target.className.indexOf('formModal') > -1){
+      this.setState({priority: 'LOW'});
+      this.props.onAddClick();
+    }
+  }
 
   render() {
     return (
-      <div className="formModal" style={{visibility: this.props.shown}}>
+      <div className="formModal" style={{visibility: this.props.shown}} onClick={this.closeOnClickOutside}>
         <form onSubmit={this.addTask.bind(this)} className="formContainer">
           <div className="input">
             <label>Task</label>
@@ -42,10 +51,10 @@ class AddForm extends Component {
           </div>
           <div className="input">
             <label>Priority</label>
-            <select name="priority" onChange={this.handleChange}>
-              <option value="low">low</option>
-              <option value="medium">medium</option>
-              <option value="high">high</option>
+            <select name="priority" value={this.state.priority} onChange={this.handleChange}>
+              <option value="low">LOW</option>
+              <option value="medium">MEDIUM</option>
+              <option value="high">HIGH</option>
             </select>
           </div>
           <div className="input">

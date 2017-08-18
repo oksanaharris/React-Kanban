@@ -14,6 +14,7 @@ class EditForm extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.closeOnClickOutside = this.closeOnClickOutside.bind(this);
 
   }
 
@@ -54,14 +55,19 @@ class EditForm extends Component {
     console.log('our task to Edit', taskToEdit);
 
     this.props.editTask(taskToEdit);
-    // console.log('this is our new task from state', this.state);
     this.props.closeEditForm();
+  }
+
+  closeOnClickOutside(e){
+    if(e.target.className.indexOf('formModal') > -1){
+      this.props.closeEditForm();
+    }
   }
 
 
   render() {
     return (
-      <div className="formModal" style={{visibility: this.props.shown}}>
+      <div className="formModal" onClick={this.closeOnClickOutside}>
         <form onSubmit={this.saveTask.bind(this)} className="formContainer">
           <div className="input">
             <label>Task</label>
@@ -69,10 +75,10 @@ class EditForm extends Component {
           </div>
           <div className="input">
             <label>Priority</label>
-            <select name="priority" onChange={this.handleChange}>
-              <option value="low">low</option>
-              <option value="medium">medium</option>
-              <option value="high">high</option>
+            <select name="priority" value={this.state.priority} onChange={this.handleChange}>
+              <option value="low">LOW</option>
+              <option value="medium">MEDIUM</option>
+              <option value="high">HIGH</option>
             </select>
           </div>
           <div className="input">

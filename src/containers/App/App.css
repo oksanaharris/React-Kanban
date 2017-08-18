@@ -47,6 +47,7 @@ body {
   background: none;
   border: 1px solid white;
   padding: 0 15px;
+  line-height: 20px;
 }
 
 .App-intro {
@@ -104,9 +105,21 @@ body {
   min-width: 250px;
 }
 
+.LOW, .low {
+  background-color: #c9e2dc;
+}
+
+.MEDIUM, .medium {
+  background-color: #ffb66d;
+}
+
+.HIGH, .high {
+  background-color: #ff7777;
+}
+
 .cardTitle{
   margin-bottom: 15px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .cardDetails {
