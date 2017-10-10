@@ -1,0 +1,186 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+  background-color: #f7f7f7;
+
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40px;
+}
+
+.App-header {
+  background-color: #585c63;
+  height: 70px;
+  padding: 5px 10px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navElement {
+  height: 40px;
+  /*background-color: orange;*/
+  font-size: 20px;
+  line-height: 40px;
+  vertical-align: center;
+  color: white;
+  margin: 10px;
+}
+
+.pageTitle {
+  min-width: 140px;
+}
+
+.newTaskButton{
+  background: none;
+  border: 1px solid white;
+  padding: 0 15px;
+  line-height: 20px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.dashboardContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.boardContainer {
+  background-color: #e6e9ef;
+  /*padding: 20px;*/
+  width: 32%;
+  border-radius: 2px;
+  min-width: 300px;
+  margin: 10px;
+  height: 750px;
+  overflow: auto;
+}
+
+.boardTitle {
+  font-size: 20px;
+  background-color: #c2c6ce;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 2px 2px 0 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+
+.cardContainer {
+  background-color: #c9e2dc;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  text-align: left;
+  box-shadow: 2px 5px 15px #888888;
+  border-radius: 2px;
+  min-width: 250px;
+}
+
+.LOW, .low {
+  background-color: #c9e2dc;
+}
+
+.MEDIUM, .medium {
+  background-color: #ffb66d;
+}
+
+.HIGH, .high {
+  background-color: #ff7777;
+}
+
+.cardTitle{
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.cardDetails {
+  line-height: 20px;
+  /*background-color: orange;*/
+  vertical-align: middle;
+  margin: 1px 0;
+}
+
+.cardButtonContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cardButton {
+  height: 30px;
+  line-height: 30px;
+  width: 100px;
+  border: none;
+  background-color: white;
+  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  min-width: 100px;
+}
+
+.formModal {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /*display: none;*/
+}
+
+.formContainer {
+  background-color: white;
+  width: 600px;
+  height: 300px;
+  margin: 10% auto;
+  padding: 20px;
+  text-align: left;
+}
+
+.input {
+  margin: 20px;
+}
+
+.formButton {
+  margin-left: 20px;
+  margin-top: 40px;
+  position: relative;
+  right: 0;
+}
+
+label {
+  margin-right: 10px;
+}
