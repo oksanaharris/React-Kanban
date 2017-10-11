@@ -120,6 +120,7 @@ body {
 .cardTitle{
   margin-bottom: 15px;
   margin-top: 10px;
+
 }
 
 .cardDetails {
@@ -133,18 +134,73 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 22px;
+  margin-bottom: 10px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-out;
+}
+
+.cardContainer:hover .cardButtonContainer{
+  opacity: 1;
+}
+
+.cardContainer:hover .cardButton {
+  background-color: white;
 }
 
 .cardButton {
-  height: 30px;
-  line-height: 30px;
-  width: 100px;
-  border: none;
-  background-color: white;
-  font-size: 14px;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  min-width: 100px;
+  /*height: 30px;*/
+  /*line-height: 30px;*/
+  /*width: 100px;*/
+  background-color: #c2c6ce;
+  transition: background-color 0.3s ease-out;
+  width: 32px;
+  height: 32px;
+  /*vertical-align: center;*/
+  /*line-height: 38px;*/
+  /*text-align: center;*/
+  padding: 0;
+  border-radius: 50%;
+  /*min-width: 100px;*/
+}
+
+.deleteButton {
+  background-color: #c2c6ce;
+  width: 32px;
+  height: 32px;
+  vertical-align: center;
+  line-height: 38px;
+  text-align: center;
+  padding: 0;
+  border-radius: 50%;
+
+}
+
+.trashCanImage {
+  height: 18px;
+  /*background-color: green;*/
+}
+
+.rightArrowButton {
+  /*padding-top: 3px;*/
+}
+
+.rightArrowImage {
+  margin-top: 8px;
+  margin-left: 9px;
+  height: 16px;
+}
+
+.leftArrowImage {
+  margin-top: 8px;
+  margin-left: 6px;
+  height: 16px;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
 }
 
 .formModal {

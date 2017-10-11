@@ -7,7 +7,7 @@ const initialState = {
       id: 1,
       task: 'Relearn Everything',
       priority: 'low',
-      status: 'queue',
+      status: 'queued up',
       createdBy: 'Reyn',
       assignedTo: 'Oksana'
     },
@@ -15,18 +15,28 @@ const initialState = {
       id: 2,
       task: 'Poop muh pants and do the rock-away',
       priority: 'high',
-      status: 'queue',
+      status: 'queued up',
       createdBy: 'Jon',
       assignedTo: 'Ian'
     }
   ]
 };
 
+// const initialState = {
+//   addFormVisibility: 'none',
+//   cards: []
+// };
+
 let taskId = 2;
 
 const myReducer = (state = initialState, action) => {
   console.log('this is action', action);
   switch (action.type) {
+    // case 'LOAD_TASK':
+    //   console.log('action', action);
+    //   return Object.assign({}, state, {
+    //     cards: [...action.tasks]
+    //   });
     case 'ADD_TASK':
       console.log('action', action);
       return Object.assign({}, state, {
@@ -36,7 +46,7 @@ const myReducer = (state = initialState, action) => {
             id: ++taskId,
             task: action.task,
             priority: action.priority,
-            status: 'queue',
+            status: 'queued up',
             createdBy: action.createdBy,
             assignedTo: action.assignedTo
           }
@@ -46,11 +56,11 @@ const myReducer = (state = initialState, action) => {
     case 'NEXT_STAGE':
       let newCards = state.cards.map(card => {
         if (card.id === action.id) {
-          if (card.status === 'queue') {
+          if (card.status === 'queued up' || card.status === 'QUEUED UP') {
             card.status = 'in progress';
             return card;
-          } else if (card.status === 'in progress'){
-            card.status = 'done';
+          } else if (card.status === 'in progress' || card.status === 'IN PROGRESS'){
+            card.status = 'completed';
             return card;
           }
           return card;
@@ -59,6 +69,25 @@ const myReducer = (state = initialState, action) => {
       });
       return Object.assign({}, state, {
         cards: newCards
+      });
+
+
+    case 'PREVIOUS_STAGE':
+      let changedCards = state.cards.map(card => {
+        if (card.id === action.id) {
+          if (card.status === 'completed' || card.status === 'COMPLETED') {
+            card.status = 'in progress';
+            return card;
+          } else if (card.status === 'in progress' || card.status === 'IN PROGRESS'){
+            card.status = 'queued up';
+            return card;
+          }
+          return card;
+        }
+        return card;
+      });
+      return Object.assign({}, state, {
+        cards: changedCards
       });
 
     case 'EDIT_TASK':
@@ -72,6 +101,21 @@ const myReducer = (state = initialState, action) => {
         return card;
       });
       return  Object.assign({}, state, {cards: editedCards});
+
+    case 'MOVE_TASK':
+      let revisedCards = state.cards.map(card => {
+        console.log('card status', card.status);
+          console.log('action column', action.column);
+        console.log('card id', card.id, typeof(card.id));
+        console.log('action id', action.id, typeof(action.id));
+        if (card.id.toString() === action.id) {
+
+          card.status = action.column;
+        }
+        return card;
+      });
+      console.log('revised cards', revisedCards);
+      return  Object.assign({}, state, {cards: revisedCards});
 
     case 'DELETE_TASK':
       let fewerCards = state.cards.filter(card => {

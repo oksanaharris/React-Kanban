@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {nextStageAction} from '../../actions';
+import {previousStageAction} from '../../actions';
 import {deleteTaskAction} from '../../actions';
+import {moveToColumnAction} from '../../actions';
+// import {loadTasks} from '../../actions';
 import Card from '../../components/Card';
 import EditForm from '../EditForm';
 
@@ -15,8 +18,18 @@ class QueueBoard extends Component {
     }
   }
 
+  // componentWillMount (){
+  //   this.props.loadTasks();
+  // }
+
   nextStage(id) {
+    console.log('triggering nextStage with id', id);
     this.props.setToNextStage(id);
+  }
+
+  previousStage(id) {
+    console.log('triggering previous stage with id', id);
+    this.props.setToPreviousStage(id);
   }
 
   deleteTask(id){
@@ -36,10 +49,26 @@ class QueueBoard extends Component {
     })
   }
 
+  onCardDrag(event, id){
+    console.log('this is id', id);
+    console.log('this is e', event);
+    event.dataTransfer.setData("text", id);
+  }
+
+  onBoardDragOver(e){
+    e.preventDefault();
+  }
+
+  onCardDrop(e, column){
+    let data = e.dataTransfer.getData("text");
+    console.log('this is data', data);
+    this.props.moveToColumn(data, column);
+  }
+
 
   render() {
     return (
-      <div className="boardContainer">
+      <div className="boardContainer" onDrop={(event)=>this.onCardDrop(event, this.props.title)} onDragOver={(event) => this.onBoardDragOver(event)}>
         {
           (this.state.editTaskId) ?
               <EditForm targetTaskId={this.state.editTaskId} closeEditForm={()=> this.closeEditForm()}/> : ''
@@ -48,11 +77,11 @@ class QueueBoard extends Component {
         <ul className="list">
           {this.props.cards
             .filter(card => {
-              return card.status === this.props.filterBy;
+              return card.status === this.props.filterBy || card.status === this.props.filterBy.toUpperCase();
             })
             .map(card => {
             return (
-              <Card key={card.id} {...card} buttonText={this.props.buttonText} onButtonClick={() => this.nextStage(card.id)} openEditForm={() => this.openEditForm(card.id)} onDeleteClick={() => this.deleteTask(card.id)} />
+              <Card key={card.id} {...card} buttonText={this.props.buttonText} onPreviousButtonClick={() => this.previousStage(card.id)} onNextButtonClick={() => this.nextStage(card.id)} openEditForm={() => this.openEditForm(card.id)} onDeleteClick={() => this.deleteTask(card.id)} onCardDrag={(event)=>this.onCardDrag(event, card.id)} />
           )})}
         </ul>
       </div>
@@ -68,8 +97,17 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    // loadTasks: () => {
+    //   dispatch(loadTasks())
+    // },
+    moveToColumn: (id, column) => {
+      dispatch(moveToColumnAction(id, column));
+    },
     setToNextStage: (id) => {
       dispatch(nextStageAction(id));
+    },
+    setToPreviousStage: (id) => {
+      dispatch(previousStageAction(id));
     },
     deleteTask: (id) => {
       dispatch(deleteTaskAction(id));

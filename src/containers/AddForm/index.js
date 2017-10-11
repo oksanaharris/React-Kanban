@@ -29,7 +29,12 @@ class AddForm extends Component {
     this.props.addTask({...this.state});
     console.log('this is our new task from state', this.state);
     this.props.onAddClick();
-    this.setState({priority: 'LOW'});
+    this.setState({
+      task: '',
+      priority: 'LOW',
+      createdBy: '',
+      assignedTo: ''
+    });
 
   }
 

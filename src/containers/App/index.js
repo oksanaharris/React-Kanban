@@ -38,9 +38,9 @@ class App extends Component {
           <OpenAddForm onPlusClick={()=>{this.onPlusClick()}} />
         </div>
         <div className="dashboardContainer">
-          <QueueBoard filterBy="queue" title="QUEUED UP" buttonText="STARTED"/>
+          <QueueBoard filterBy="queued up" title="QUEUED UP" buttonText="STARTED"/>
           <QueueBoard filterBy="in progress" title="IN PROGRESS" buttonText="FINISHED"/>
-          <QueueBoard filterBy="done" title="COMPLETED" buttonText="ARCHIVE"/>
+          <QueueBoard filterBy="completed" title="COMPLETED" buttonText="ARCHIVE"/>
 
         </div>
         <AddForm shown={this.state.addTaskModal} onAddClick={this.onAddClick} />
