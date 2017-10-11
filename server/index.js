@@ -11,19 +11,27 @@ app.get('/api/tasks', (req, res) => {
     [
       {
         id: 1,
-        task: 'Slay the Dragons',
-        priority: 'low',
-        status: 'queue',
-        createdBy: 'Reyn',
-        assignedTo: 'Oksana'
+        task: 'Tell Jon Snow he\'s not a bastard',
+        priority: 'high',
+        status: 'queued up',
+        createdBy: 'Bran',
+        assignedTo: 'Sam'
       },
       {
         id: 2,
-        task: 'Tell Jon Snow he is not a bastard',
-        priority: 'high',
-        status: 'queue',
-        createdBy: 'Jon',
-        assignedTo: 'Ian'
+        task: 'Pull up muh pants and do the rock-away',
+        priority: 'medium',
+        status: 'queued up',
+        createdBy: 'Me',
+        assignedTo: 'Me'
+      },
+      {
+        id: 3,
+        task: 'Find the question to 42',
+        priority: 'low',
+        status: 'queued up',
+        createdBy: 'Universe',
+        assignedTo: 'You'
       }
     ]
   );
