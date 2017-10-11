@@ -5,19 +5,27 @@ const initialState = {
   [
     {
       id: 1,
-      task: 'Relearn Everything',
-      priority: 'low',
+      task: 'Tell Jon Snow he\'s not a bastard',
+      priority: 'high',
       status: 'queued up',
-      createdBy: 'Reyn',
-      assignedTo: 'Oksana'
+      createdBy: 'Bran',
+      assignedTo: 'Sam'
     },
     {
       id: 2,
-      task: 'Poop muh pants and do the rock-away',
-      priority: 'high',
+      task: 'Pull up muh pants and do the rock-away',
+      priority: 'medium',
       status: 'queued up',
-      createdBy: 'Jon',
-      assignedTo: 'Ian'
+      createdBy: 'Me',
+      assignedTo: 'Me'
+    },
+    {
+      id: 3,
+      task: 'Find the question to 42',
+      priority: 'low',
+      status: 'queued up',
+      createdBy: 'Universe',
+      assignedTo: 'You'
     }
   ]
 };
