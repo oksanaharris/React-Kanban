@@ -37,7 +37,8 @@ class QueueBoard extends Component {
   }
 
   openEditForm(taskId) {
-    console.log('task of interest', taskId);
+    // console.log('task of interest', taskId);
+    console.log('openEditForm firing');
     this.setState({
       editTaskId: taskId
     });

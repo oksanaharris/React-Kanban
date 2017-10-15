@@ -35,10 +35,10 @@ const initialState = {
 //   cards: []
 // };
 
-let taskId = 2;
+let taskId = 3;
 
 const myReducer = (state = initialState, action) => {
-  console.log('this is action', action);
+  // console.log('this is action', action);
   switch (action.type) {
     // case 'LOAD_TASK':
     //   console.log('action', action);
@@ -46,7 +46,7 @@ const myReducer = (state = initialState, action) => {
     //     cards: [...action.tasks]
     //   });
     case 'ADD_TASK':
-      console.log('action', action);
+      // console.log('action', action);
       return Object.assign({}, state, {
         cards: [
           ...state.cards,
@@ -112,17 +112,17 @@ const myReducer = (state = initialState, action) => {
 
     case 'MOVE_TASK':
       let revisedCards = state.cards.map(card => {
-        console.log('card status', card.status);
-          console.log('action column', action.column);
-        console.log('card id', card.id, typeof(card.id));
-        console.log('action id', action.id, typeof(action.id));
+        // console.log('card status', card.status);
+        //   console.log('action column', action.column);
+        // console.log('card id', card.id, typeof(card.id));
+        // console.log('action id', action.id, typeof(action.id));
         if (card.id.toString() === action.id) {
 
           card.status = action.column;
         }
         return card;
       });
-      console.log('revised cards', revisedCards);
+      // console.log('revised cards', revisedCards);
       return  Object.assign({}, state, {cards: revisedCards});
 
     case 'DELETE_TASK':

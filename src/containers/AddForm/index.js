@@ -27,7 +27,7 @@ class AddForm extends Component {
     e.preventDefault();
 
     this.props.addTask({...this.state});
-    console.log('this is our new task from state', this.state);
+    // console.log('this is our new task from state', this.state);
     this.props.onAddClick();
     this.setState({
       task: '',

@@ -9,13 +9,13 @@ const Card = ({task, priority, createdBy, assignedTo, onNextButtonClick, onPrevi
       <p className="cardDetails">Assigned to: {assignedTo}</p>
       <div className="cardButtonContainer">
         <div className="cardButton leftArrowButton" onClick={onPreviousButtonClick}>
-          <img className="leftArrowImage" src="./play-arrow.svg" />
+          <img className="leftArrowImage" src="./play-arrow.svg" alt=""/>
         </div>
         <div className="cardButton deleteButton" onClick={onDeleteClick}>
-          <img className="trashCanImage" src="./waste-bin.svg" />
+          <img className="trashCanImage" src="./waste-bin.svg" alt=""/>
         </div>
         <div className="cardButton rightArrowButton" onClick={onNextButtonClick}>
-          <img className="rightArrowImage" src="./play-arrow.svg" />
+          <img className="rightArrowImage" src="./play-arrow.svg" alt=""/>
         </div>
       </div>
     </div>
